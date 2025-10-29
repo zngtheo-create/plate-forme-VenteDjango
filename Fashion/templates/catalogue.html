@@ -1,0 +1,268 @@
+
+
+
+ 
+
+{% load static %}
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZaraShop | Boutique en ligne</title>
+
+  <!-- Liens Bootstrap et icônes -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Ton fichier CSS -->
+  <link rel="stylesheet" href="{% static 'csss/main.css' %}">
+  <link rel="stylesheet" href="{% static 'csss/catalogue.css' %}">
+  
+
+  <!-- Favicons -->
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .navbar {
+      background-color: #242122; /* fond sombre comme sur ton image */
+    }
+  </style>
+  
+
+
+</head>
+
+<body class="index-page">
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header sticky-top">
+
+    <!-- Top Bar -->
+    <div class="top-bar py-2">
+      <div class="container-fluid container-xl">
+        <div class="row align-items-center">
+
+          <div class="col-lg-4 d-none d-lg-flex">
+            <div class="top-bar-item">
+              <i class="bi bi-telephone-fill me-2"></i>
+              <span>Besoin d'aide ? Appelez-nous :<a href="tel:(+226)74254534"> (+226) 74254534</a></span>
+              
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-12 text-center">
+            <div class="announcement-slider swiper init-swiper">
+              <script type="application/json" class="swiper-config">
+                {
+                  "loop": true,
+                  "speed": 600,
+                  "autoplay": {
+                    "delay": 5000
+                  },
+                  "slidesPerView": 1,
+                  "direction": "vertical",
+                  "effect": "slide"
+                }
+              </script>
+              <div class="swiper-wrapper">
+                <marquee behavior="" direction=""><h5>Bienvenue sur ZaraShop Découvrez nos produits de qualité au meilleur prix. Profitez de nos offres spéciales dès aujourd’hui !</h5></marquee>
+                
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 d-none d-lg-block">
+            <div class="d-flex justify-content-end">
+              <div class="top-bar-item dropdown me-3">
+                <div>
+
+             <div class="swiper-wrapper">
+                <p behavior="" direction=""><h5>Bienvenue a vous {{user.username}} !  
+
+                 <a href="{% url 'panier' %}" class="btn btn-outline-primary position-relative">
+    <i class="bi bi-cart-fill"></i>
+    {% if request.session.panier %}
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            {{ request.session.panier|length }}
+        </span>
+    {% endif %}
+</a>
+
+                </h5></p>
+                
+            </div>
+              </div>
+              </div>
+              
+            </div>
+            
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- End Top Bar -->
+
+    <!-- Main Header -->
+    <div class="main-header">
+      <div class="container-fluid container-xl">
+        <div class="d-flex py-3 align-items-center justify-content-between">
+
+          <!-- Logo -->
+          <a  class="logo d-flex align-items-center">
+            <h1 class="sitename">Boutique Zara</h1>
+          </a>
+
+          <!-- la recherche dun produit -->
+  <!-- Formulaire de recherche -->
+<form method="GET" action="{% url 'catalogue' %}">
+    <input type="text" name="q" placeholder="Nom du produit..." value="{{ request.GET.q }}">
+    <input type="number" name="min_price" placeholder="Prix min" value="{{ request.GET.min_price }}">
+    <input type="number" name="max_price" placeholder="Prix max" value="{{ request.GET.max_price }}">
+    <button type="submit">Rechercher</button>
+</form>
+
+
+          <!-- Actions -->
+          <div class="header-actions d-flex align-items-center justify-content-end">
+            <button class="header-action-btn mobile-search-toggle d-xl-none" type="button" data-bs-toggle="collapse" data-bs-target="#mobileSearch">
+              <i class="bi bi-search"></i>
+            </button>
+
+           
+
+            <!-- MON Profil  -->
+             <div class="nav-item d-flex align-items-center">
+  <a class="nav-link d-flex align-items-center" href="{% url 'profil' %}" title="Voir mon profil" style="text-decoration: none;">
+   <strong>Mon Profil&nbsp;</strong>
+    {% if user.is_authenticated %}
+      {% if user.profil.photo %}
+        <img src="{{ user.profil.photo.url }}" alt="Photo de profil" class="nav-profile-mini">
+      {% else %}
+        <img src="{% static 'images/default-profile.png' %}" alt="Profil par défaut" class="nav-profile-mini">
+      {% endif %}
+    {% else %}
+      <i class="bi bi-person-circle fs-4 text-white"></i>
+    {% endif %}
+  </a>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+</ul>
+<!-- Navbar centrée -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container-fluid justify-content-center"> <!-- Centrer le contenu -->
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav text-center">
+        <li class="nav-item"><a class="nav-link fw-bold " href="#">Accueil</a></li>
+
+
+
+   
+  
+    <li class="nav-link fw-bold active">
+      <div class="mega-parent">
+       Catalogue & Produits ▼
+      <div class="mega-menu">
+        <div class="mega-content">
+          <div>
+            <h3>Femmes</h3>
+            <ul>
+              <li><a href="{% url 'catalogue' %}">Vêtements</a></li>
+              <li><a href="{% url 'catalogue' %}">Chaussures</a></li>
+              <li><a href="#">Accessoires</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Hommes</h3>
+            <ul>
+              <li><a href="{% url 'catalogue' %}">Costumes</a></li>
+              <li><a href="{% url 'catalogue' %}">Montres</a></li>
+               <li><a href="{% url 'catalogue' %}">Accessoires</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </li>
+ <li class="nav-item"><a class="nav-link" href="{% url 'panier' %}">Mon Panier</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'panier' %}">Payer maintenant</a></li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+
+
+    <!-- ======= End Header ======= -->
+    <h1>🛍️ Catalogue & Produits</h1>
+    <div class="search-bar">
+
+    </div>
+
+    <div class="catalogue-container">
+        {% for produit in produits %}
+        <div class="product-card">
+            {% if produit.image %}
+                <img src="{{ produit.image.url }}" alt="{{ produit.name }}">
+            {% else %}
+                <img src="{% static 'images/no-image.png' %}" alt="Pas d'image">
+            {% endif %}
+            <h2>{{ produit.name }}</h2>
+            <p class="description">{{ produit.description }}</p>
+            <p class="price">{{ produit.price }} FCFA</p>
+            <a href="{% url 'ajouter_au_panier' produit.id %}" class="add-btn">Ajouter au panier</a>
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+            {% for product in products %}
+    <div class="product">
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.description }}</p>
+        <p>{{ product.price }} CFA</p>
+    </div>
+{% endfor %}
+
+
+
+
+
+    <!-- ======= Footer ======= -->
+{% include 'foote.html' %}
+    <!-- ======= End Footer ======= -->
+
+        
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

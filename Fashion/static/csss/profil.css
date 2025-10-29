@@ -1,0 +1,102 @@
+/* --- Style général de la page --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #009688;  /* même style que ton inscription */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* --- Carte de profil --- */
+.profile-card {
+    background: #fff;
+    padding: 40px 50px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    width: 800px; /* largeur du formulaire */
+}
+
+.profile-card h2 {
+    text-align: center;
+    color: #004d40;
+    margin-bottom: 30px;
+}
+
+/* --- Structure à deux colonnes --- */
+.row {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+/* --- Chaque colonne --- */
+.col-md-6 {
+    flex: 1;
+}
+
+/* --- Champs du formulaire --- */
+.form-label {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.form-control,
+input[type="text"],
+input[type="email"],
+input[type="file"],
+select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+/* --- Photo de profil --- */
+.profile-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #009688;
+}
+
+/* --- Bouton centré --- */
+.text-center {
+    text-align: center;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #009688;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #00796b;
+}
+
+/* --- Responsive pour petit écran --- */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+    .profile-card {
+        width: 90%;
+        padding: 25px;
+    }
+}
+
+

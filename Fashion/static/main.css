@@ -1,0 +1,206 @@
+/* ==============================
+   HEADER STYLE - PHASION / ZARASHOP
+   ============================== */
+
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  background-color: #a03838;
+  color: #111;
+}
+
+/* ---- TOP BAR ---- */
+.top-bar {
+  background-color: #5e3939;
+  font-size: 14px;
+  color: #444;
+  border-bottom: 1px solid #eee;
+}
+
+.top-bar a {
+  color: #111;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.top-bar a:hover {
+  color: #000;
+  text-decoration: underline;
+}
+
+.top-bar .top-bar-item i {
+  color: #111;
+  font-size: 15px;
+}
+
+/* ---- MAIN HEADER ---- */
+.main-header {
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.main-header .sitename {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+  letter-spacing: -0.5px;
+}
+
+.search-form {
+  flex: 1;
+  max-width: 500px;
+  margin: 0 40px;
+}
+
+.search-form .input-group {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.search-form input {
+  border: none;
+  font-size: 14px;
+  padding: 10px 15px;
+}
+
+.search-form input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.search-form .btn {
+  background-color: #111;
+  color: #fff;
+  border: none;
+  padding: 0 16px;
+}
+
+.search-form .btn:hover {
+  background-color: #000;
+}
+
+/* ---- ACTION ICONS ---- */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.header-action-btn {
+  background: none;
+  border: none;
+  position: relative;
+  font-size: 20px;
+  color: #111;
+  transition: 0.3s;
+}
+
+.header-action-btn:hover {
+  color: #000;
+  transform: scale(1.1);
+}
+
+.header-action-btn .badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background-color: #000;
+  color: #9b0e0e;
+  font-size: 11px;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---- NAVIGATION ---- */
+.header-nav {
+  background-color: #111;
+  color: #d80606;
+}
+
+.navmenu ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 10px 0;
+  margin: 0;
+}
+
+.navmenu ul li {
+  position: relative;
+}
+
+.navmenu a {
+  color: #d11e1e;
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.navmenu a:hover,
+.navmenu a.active {
+  color: #f0c14b; /* doré léger pour l’effet hover */
+}
+
+/* Dropdown */
+.navmenu .dropdown ul {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #d80505;
+  color: #111;
+  padding: 10px 0;
+  min-width: 180px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: none;
+  z-index: 99;
+}
+
+.navmenu .dropdown:hover ul {
+  display: block;
+}
+
+.navmenu .dropdown ul li a {
+  color: #111;
+  padding: 8px 20px;
+  display: block;
+}
+
+.navmenu .dropdown ul li a:hover {
+  background: #c40b0b;
+  color: #000;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 991px) {
+  .search-form {
+    display: none;
+  }
+
+  .navmenu ul {
+    flex-direction: column;
+    background-color: #111;
+    width: 100%;
+  }
+
+  .navmenu ul li {
+    text-align: left;
+    padding: 8px 20px;
+  }
+
+  .header-actions {
+    gap: 10px;
+  }
+}

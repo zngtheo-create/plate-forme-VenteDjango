@@ -1,0 +1,60 @@
+/* Container général */
+.container-panier {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #f0f8ff;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Titre */
+.container-panier h1 {
+    text-align: center;
+    color: #1f3c88;
+    margin-bottom: 25px;
+}
+
+/* Carte commande */
+.historique-card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.historique-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Header commande */
+.historique-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.historique-header h4 {
+    margin: 0;
+    color: #1f3c88;
+}
+
+.historique-produits {
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+
+.historique-produit {
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.historique-total {
+    text-align: right;
+    font-weight: bold;
+    color: #1f3c88;
+}

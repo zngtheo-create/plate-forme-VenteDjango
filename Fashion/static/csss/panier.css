@@ -1,0 +1,141 @@
+/* Container principal du panier */
+.container-panier {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #f0f4f8; /* fond doux bleu clair */
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre */
+.container-panier h1 {
+    text-align: center;
+    color: #1f3c88; /* bleu foncé */
+    margin-bottom: 30px;
+}
+
+/* Cartes produits */
+.panier-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Image produit */
+.panier-card img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Infos produit */
+.panier-info {
+    flex: 1;
+    margin-left: 15px;
+}
+
+.panier-info h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: #333;
+}
+
+.panier-info p {
+    margin: 2px 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Quantité et sous-total */
+.panier-quantite, .panier-subtotal {
+    font-size: 0.9rem;
+    color: #111;
+    text-align: center;
+    min-width: 50px;
+}
+
+/* Bouton supprimer */
+.panier-card .btn-danger {
+    background-color: #ff5b5b;
+    border: none;
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.panier-card .btn-danger:hover {
+    background-color: #e04040;
+}
+
+/* Total et bouton payer */
+.total-panier {
+    text-align: right;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #1f3c88;
+}git --version
+
+.btn-payer {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 25px;
+    font-size: 1rem;
+    border-radius: 8px;
+    background-color: #1f3c88;
+    color: #fff;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+.btn-payer:hover {
+    background-color: #162f6b;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .panier-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .panier-info {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .panier-quantite {
+        margin-top: 5px;
+        text-align:center;
+       
+    }
+
+    .panier-subtotal {
+        margin-top: 5px;
+        text-align: left;
+       
+    }
+}
+.btn-retour {
+    background-color: #28a745; /* vert */
+    color: #fff;
+    padding: 10px 25px;
+    font-size: 1rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-retour:hover {
+    background-color: #218838; /* vert foncé */
+}

@@ -1,0 +1,53 @@
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'csss/panier.css' %}">
+
+
+<div class="container-panier">
+    <h1>🛒 Votre Panier</h1>
+
+    {% if panier %}
+        {% for key, item in panier.items %}
+        <div class="panier-card">
+            {% if item.image %}
+                <img src="{{ item.image }}" alt="{{ item.name }}">
+            {% endif %}
+
+            <div class="panier-info">
+                <h4>{{ item.name }}</h4>
+                <p>Prix : {{ item.price }} FCFA</p>
+            </div>
+
+            <div class="panier-quantite">
+                Qté : {{ item.quantite }}
+            </div>
+
+            <div class="panier-subtotal">
+                {{ item.subtotal }} FCFA
+            </div>
+
+            <a href="{% url 'supprimer_du_panier' key %}" class="btn btn-danger">Supprimer</a>
+        </div>
+        {% endfor %}
+
+        <div class="total-panier">Total : {{ total }} FCFA</div>
+        <a href="{% url 'paiement' %}" class="btn btn-payer">Payer maintenant</a>
+       
+    {% else %}
+        <p style="text-align:center;">Votre panier est vide.</p>
+    {% endif %}
+        <div>
+
+        </div>
+ 
+  <div class="d-flex justify-content-center align-items-center vh-100">
+    <input type="button" 
+           value="Retour au Catalogue" 
+           onclick="window.location.href='{% url 'catalogue' %}'" 
+           class="btn btn-retour">
+</div>
+</div>
+
+{% endblock %}

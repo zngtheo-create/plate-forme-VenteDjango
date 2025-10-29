@@ -1,0 +1,95 @@
+
+{% load static %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil</title>
+    
+    <link rel="stylesheet" href="{% static 'csss/profil.css' %}">
+
+</head>
+<body>
+
+    {% block content %}
+<div class="container mt-5">
+  <div class="profile-card shadow-lg p-4 rounded">
+    <h2 class="text-center mb-4">Mon Profil</h2>
+
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="row">
+        <!-- Colonne gauche -->
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label class="form-label fw-bold">Nom d'utilisateur</label>
+            <input type="text" class="form-control" value="{{ user.username }}" disabled>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-bold">Email</label>
+            <input type="email" class="form-control" value="{{ user.email }}" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="id_telephone" class="form-label fw-bold">Téléphone</label>
+            {{ form.telephone }}
+          </div>
+
+            <div class="mb-3">
+            <label for="id_pays" class="form-label fw-bold">Pays</label>
+            {{ form.pays }}
+          </div>
+
+            <div class="mb-3">
+            <label for="id_ville" class="form-label fw-bold">Ville</label>
+            {{ form.ville }}
+          </div>
+        
+          
+        </div>
+
+        <!-- Colonne droite -->
+        <div class="col-md-6 text-center">
+            
+          {% if user.profil.photo %}
+            <img src="{{ user.profil.photo.url }}" alt="Photo de profil" class="profile-img mb-3">
+          {% else %}
+            <img src="{% static 'images/default-profile.png' %}" alt="Profil par défaut" class="profile-img mb-3">
+          {% endif %}
+          <div class="mb-3">
+            <label for="id_photo" class="form-label fw-bold">Changer la photo</label>
+            {{ form.photo }}
+          </div>
+          
+          <div class="mb-3">
+            <label for="id_adresse" class="form-label fw-bold">adresses de livraison</label>
+            {{ form.adresse }}
+          </div>
+          <div class="mb-3">
+            <label for="id_code_postal" class="form-label fw-bold">Code postal</label>
+            {{ form.code_postal }}
+          </div>
+          
+          <div class="mb-3">
+                <a class="nav-link" href="{% url 'historique' %}">Historique de Mes achat</a>
+
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        <button type="submit" class="btn btn-primary px-5">Enregistrer</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+    
+</body>
+</html>
+

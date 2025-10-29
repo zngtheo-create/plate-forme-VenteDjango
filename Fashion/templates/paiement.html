@@ -1,0 +1,38 @@
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'csss/paiement.css' %}">
+<div class="container-panier">
+    <h1>Paiement sécurisé</h1>
+
+    <p style="text-align:center; font-size:1.1rem;">Total à payer : <strong>{{ total }} FCFA</strong></p>
+
+    <!-- Choix du type de paiement -->
+    <div class="paiement-options">
+        <h3>Choisissez votre méthode de paiement :</h3>
+
+        <div class="paiement-type">
+            <div class="paiement-card">
+                <h4>📱 Paiement Mobile</h4>
+                <ul>
+                    <li>Orange Money</li>
+                    <li>Moov Money</li>
+                    <li>Wave</li>
+                </ul>
+            </div>
+
+            <div class="paiement-card">
+                <h4>💳 Paiement par Carte</h4>
+                <ul>
+                    <li>Visa</li>
+                    <li>MasterCard</li>
+                    <li>PayPal</li>
+                </ul>
+            </div>
+        </div>
+
+        <button class="btn btn-payer">Payer maintenant</button>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% load static %}
+
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'csss/histo.css' %}">
+
+<div class="container-panier">
+    <h1>📜 Historique des commandes</h1>
+
+    {% if commandes %}
+        {% for commande in commandes %}
+        <div class="historique-card">
+            <div class="historique-header">
+                <h4>Commande #{{ commande.id }}</h4>
+                <span>{{ commande.date|date:"d/m/Y H:i" }}</span>
+            </div>
+
+            <div class="historique-produits">
+                {% for produit in commande.produits %}
+                <div class="historique-produit">
+                    <strong>{{ produit.name }}</strong> - {{ produit.quantite }} x {{ produit.price }} FCFA
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="historique-total">
+                Total : {{ commande.total }} FCFA | Statut : {{ commande.statut }}
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p style="text-align:center;">Vous n’avez aucune commande pour le moment.</p>
+    {% endif %}
+</div>
+{% endblock %}

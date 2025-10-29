@@ -1,0 +1,290 @@
+
+
+
+
+{% load static %}
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZaraShop | Boutique en ligne</title>
+
+  <!-- Liens Bootstrap et icônes -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Ton fichier CSS -->
+  <link rel="stylesheet" href="{% static 'csss/main.css' %}">
+  
+
+  <!-- Favicons -->
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .navbar {
+      background-color: #242122; /* fond sombre comme sur ton image */
+    }
+  </style>
+  
+
+
+</head>
+
+<body class="index-page">
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header sticky-top">
+
+    <!-- Top Bar -->
+    <div class="top-bar py-2">
+      <div class="container-fluid container-xl">
+        <div class="row align-items-center">
+
+          <div class="col-lg-4 d-none d-lg-flex">
+            <div class="top-bar-item">
+              <i class="bi bi-telephone-fill me-2"></i>
+              <span>Besoin d'aide ? Appelez-nous :<a href="tel:(+226)74254534"> (+226) 74254534</a></span>
+              
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-12 text-center">
+            <div class="announcement-slider swiper init-swiper">
+              <script type="application/json" class="swiper-config">
+                {
+                  "loop": true,
+                  "speed": 600,
+                  "autoplay": {
+                    "delay": 5000
+                  },
+                  "slidesPerView": 1,
+                  "direction": "vertical",
+                  "effect": "slide"
+                }
+              </script>
+              <div class="swiper-wrapper">
+                <marquee behavior="" direction=""><h5>Bienvenue sur ZaraShop Découvrez nos produits de qualité au meilleur prix. Profitez de nos offres spéciales dès aujourd’hui !</h5></marquee>
+                
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 d-none d-lg-block">
+            <div class="d-flex justify-content-end">
+              <div class="top-bar-item dropdown me-3">
+                <div>
+
+                    <div class="swiper-wrapper">
+                    <p behavior="" direction=""><h5>Bienvenue a vous {{user.username}} !  
+
+                                        <a href="{% url 'panier' %}" class="btn btn-outline-primary position-relative">
+                                                    <i class="bi bi-cart-fill"></i>
+                                                    {% if request.session.panier %}
+                                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                                    {{ request.session.panier|length }}
+                                                    </span>
+                                                    {% endif %}
+                                        </a>
+
+                    </h5></p>
+                
+                    </div>
+                  </div>
+                </div>
+              
+            </div>
+            
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- End Top Bar -->
+
+    <!-- Main Header -->
+    <div class="main-header">
+      <div class="container-fluid container-xl">
+        <div class="d-flex py-3 align-items-center justify-content-between">
+
+          <!-- Logo -->
+          <a  class="logo d-flex align-items-center">
+            <h1 class="sitename">Boutique Zara</h1>
+          </a>
+
+          <!-- la recherche dun produit -->
+  
+<form method="GET" action="{% url 'catalogue' %}">
+    <input type="text" name="q" placeholder="Nom du produit...">
+    <input type="text" name="category" placeholder="Catégorie...">
+    <input type="number" name="min_price" placeholder="Prix min">
+    <input type="number" name="max_price" placeholder="Prix max">
+    <button type="submit">Rechercher</button>
+</form>
+
+
+
+
+
+
+
+
+
+
+          <!-- Actions -->
+          <div class="header-actions d-flex align-items-center justify-content-end">
+            <button class="header-action-btn mobile-search-toggle d-xl-none" type="button" data-bs-toggle="collapse" data-bs-target="#mobileSearch">
+              <i class="bi bi-search"></i>
+            </button>
+
+           
+
+            <!-- MON Profil  -->
+             <div class="nav-item d-flex align-items-center">
+  <a class="nav-link d-flex align-items-center" href="{% url 'profil' %}" title="Voir mon profil" style="text-decoration: none;">
+   <strong>Mon Profil&nbsp;</strong>
+    {% if user.is_authenticated %}
+      {% if user.profil.photo %}
+        <img src="{{ user.profil.photo.url }}" alt="Photo de profil" class="nav-profile-mini">
+      {% else %}
+        <img src="{% static 'images/default-profile.png' %}" alt="Profil par défaut" class="nav-profile-mini">
+      {% endif %}
+    {% else %}
+      <i class="bi bi-person-circle fs-4 text-white"></i>
+    {% endif %}
+  </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+</ul>
+<!-- Navbar centrée -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container-fluid justify-content-center"> <!-- Centrer le contenu -->
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav text-center">
+        <li class="nav-item"><a class="nav-link fw-bold active" href="#">Accueil</a></li>
+
+
+
+   
+  
+    <li class="nav-link">
+      <div class="mega-parent">
+      Catalogue & Produits ▼
+      <div class="mega-menu">
+        <div class="mega-content">
+          <div>
+            <h3>Femmes</h3>
+            <ul>
+              <li><a href="{% url 'catalogue' %}">Vêtements</a></li>
+              <li><a href="{% url 'catalogue' %}">Chaussures</a></li>
+              <li><a href="{% url 'catalogue' %}">Accessoires</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Hommes</h3>
+            <ul>
+              <li><a href="{% url 'catalogue' %}">Costumes</a></li>
+              <li><a href="{% url 'catalogue' %}">Montres</a></li>
+               <li><a href="{% url 'catalogue' %}">Accessoires</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </li>
+ <li class="nav-item"><a class="nav-link" href="{% url 'panier' %}"> Mon Panier</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'panier' %}">Payer maintenant</a></li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+   {% block content %}
+
+<!-- 🌟 SECTION HERO (Bannière principale) -->
+<section class="hero-section d-flex align-items-center justify-content-center text-center text-white">
+  <div>
+    <a> <h1 class="fw-bold">Bienvenue sur FashionStore 👗🕶️</h1></a>
+    <p class="lead">Découvrez les dernières tendances pour hommes et femmes.</p>
+    <a href="{% url 'catalogue' %}" class="btn btn-light btn-lg mt-3">Voir le Catalogue</a>
+  </div>
+</section>
+
+<!-- 🛍️ PRODUITS POPULAIRES -->
+<div class="container my-5">
+  <h2 class="text-center mb-4">Nos Produits Populaires</h2>
+  <div class="row text-center">
+    {% for produit in produits %}
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm border-0">
+        {% if produit.image %}
+        <img src="{{ produit.image.url }}" class="card-img-top" alt="{{ produit.name }}">
+        {% else %}
+        <img src="{% static 'images/no-image.png' %}" class="card-img-top" alt="Aucune image">
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ produit.name }}</h5>
+          <p class="card-text text-muted">{{ produit.price }} FCFA</p>
+          <a href="{% url 'catalogue' %}" class="btn btn-dark btn-sm">Voir Détails</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- 💬 À PROPOS -->
+<section class="about text-center py-5">
+  <div class="container">
+    <h2>À propos de FashionStore</h2>
+    <p class="lead mt-3">
+      Nous vous proposons une sélection élégante de vêtements, chaussures et accessoires pour tous les styles.<br>
+      Qualité, confort et tendances au meilleur prix.
+    </p>
+  </div>
+</section>
+
+<!-- 💌 NEWSLETTER -->
+<section class="newsletter text-center py-5 text-white">
+  <div class="container">
+    <h3>Restez informé(e) des nouveautés</h3>
+
+  </div>
+</section>
+
+{% endblock %}
+
+
+
+
+
+
+    {% include 'foote.html' %}
+
+
+  </header>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

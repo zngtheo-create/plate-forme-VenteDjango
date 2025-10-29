@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+    <link rel="stylesheet" href="{% static 'csss/incr.css' %}">
+   
+</head>
+<body>
+    <div class="form-container">
+        <h1>Inscription</h1>
+        
+        <form method="POST" action="{% url 'inscription' %}">
+            {% csrf_token %}
+           
+            {{ form.as_p }}
+
+            <small>Required. 100 characters or fewer. Letters, digits and @/./+/-/_ only.</small>
+             
+
+            <button type="submit">S’inscrire</button>
+        </form>
+             <p>Déjà inscrit ? <a href="{% url 'connexion' %}">Se connecter</a></p>
+       
+    </div>
+</body>
+</html>
+
+
+
+
