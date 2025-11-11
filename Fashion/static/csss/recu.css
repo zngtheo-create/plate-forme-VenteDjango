@@ -1,0 +1,93 @@
+body {
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    font-family: "Poppins", sans-serif;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.recu-container {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.recu-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    padding: 30px;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.recu-header {
+    text-align: center;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 15px;
+}
+
+.recu-header h1 {
+    color: #007bff;
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.recu-header .date {
+    display: block;
+    font-size: 14px;
+    color: #888;
+}
+
+.recu-info, .recu-articles, .recu-total {
+    margin-top: 25px;
+}
+
+.recu-info h2,
+.recu-articles h2 {
+    font-size: 20px;
+    color: #444;
+    margin-bottom: 10px;
+    border-left: 4px solid #007bff;
+    padding-left: 8px;
+}
+
+.recu-info p {
+    margin: 5px 0;
+}
+
+.recu-articles table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.recu-articles th {
+    background: #007bff;
+    color: white;
+    text-align: left;
+    padding: 10px;
+}
+
+.recu-articles td {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.recu-total {
+    text-align: right;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.recu-footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 14px;
+    color: #666;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

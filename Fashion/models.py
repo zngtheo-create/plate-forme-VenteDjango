@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.contrib.auth.models import User 
 
 
 # creation dune dable dans model p
@@ -8,9 +9,6 @@ class Utilisateur(models.Model):
     nom = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
     mote_de_passe = models.CharField(max_length=100)
-
-
-
 
 class Profil(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -24,9 +22,6 @@ class Profil(models.Model):
     def __str__(self):
         return self.user.username
 
-
-
-    
 
     #les produits
     
@@ -62,3 +57,13 @@ class Commentaire(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return f"Commentaire de {self.utilisateur.username} sur {self.produit.name}"
+    
+    # recu
+    class recu(models.Model):
+        User = models.ForeignKey(User, on_delete=models.CASCADE)
+        date_commande = models.DateTimeField(default=timezone.now)
+        total = models.DecimalField(max_digits=10, decimal_places=2)
+
+    
+def __str__(self):
+        return f"Commande #{self.id} - {self.user.username}"

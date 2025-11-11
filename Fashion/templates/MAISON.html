@@ -5,13 +5,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ZaraShop | Boutique en ligne</title>
+  <title>TC Fashion | Boutique en ligne</title>
 
   <!-- Liens Bootstrap et icônes -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
 
-  <!-- Ton fichier CSS -->
+  <!-- fichier CSS -->
   <link rel="stylesheet" href="{% static 'csss/main.css' %}">
   
 
@@ -67,7 +67,7 @@
                 }
               </script>
               <div class="swiper-wrapper">
-                <marquee behavior="" direction=""><h5>Bienvenue sur ZaraShop Découvrez nos produits de qualité au meilleur prix. Profitez de nos offres spéciales dès aujourd’hui !</h5></marquee>
+                <marquee behavior="" direction=""><h5>Bienvenue sur TC Fashion Découvrez nos produits de qualité au meilleur prix. Profitez de nos offres spéciales dès aujourd’hui !</h5></marquee>
                 
               </div>
             </div>
@@ -96,19 +96,18 @@
         </div>
       </div>
     </div>
-    <!-- End Top Bar -->
 
-    <!-- Main Header -->
+
     <div class="main-header">
       <div class="container-fluid container-xl">
         <div class="d-flex py-3 align-items-center justify-content-between">
 
           <!-- Logo -->
           <a  class="logo d-flex align-items-center">
-            <h1 class="sitename">Boutique Zara</h1>
+            <h1 class="sitename">TC Fashion</h1>
           </a>
 
-          <!-- la recherche dun produit -->
+          <!-- la recherche d'un produit -->
   
 <form method="GET" action="{% url 'inscription' %}">
     <input type="text" name="q" placeholder="Nom du produit...">
@@ -169,10 +168,10 @@
 </nav>
    {% block content %}
 
-<!-- 🌟 SECTION HERO (Bannière principale) -->
+
 <section class="hero-section d-flex align-items-center justify-content-center text-center text-white">
   <div>
-    <h1 class="fw-bold">Bienvenue sur FashionStore 👗🕶️</h1>
+    <h1 class="fw-bold">Bienvenue sur TC Fashion 👗🕶️</h1>
     <p class="lead">Découvrez les dernières tendances pour hommes et femmes.</p>
     <a href="{% url 'connexion' %}" class="btn btn-light btn-lg mt-3">Voir le Catalogue</a>
   </div>
@@ -204,7 +203,7 @@
 <!-- 💬 À PROPOS -->
 <section class="about text-center py-5">
   <div class="container">
-    <h2>À propos de FashionStore</h2>
+    <h2>À propos de TC Fashion</h2>
     <p class="lead mt-3">
       Nous vous proposons une sélection élégante de vêtements, chaussures et accessoires pour tous les styles.<br>
       Qualité, confort et tendances au meilleur prix.
@@ -232,7 +231,7 @@
 <footer class="footer">
   <div class="footer-container">
     <div class="footer-section">
-      <h3>ZaraShop</h3>
+      <h3>TC Fashion</h3>
       <p>Votre boutique de mode en ligne préférée 🛍️</p>
     </div>
 
@@ -258,7 +257,7 @@
   </div>
 
   <div class="footer-bottom">
-    <p>&copy; 2025 ZaraShop — Tous droits réservés</p>
+    <p>&copy; 2025 TC Fashion — Tous droits réservés</p>
   </div>
 </footer>
 

@@ -30,18 +30,18 @@ urlpatterns = [
     path('catalogue/', views.catalogue, name='catalogue'),
     path('', views.home, name='home'),
     path('ajouter-produit/', views.ajouter_produit, name='ajouter_produit'),
-
     path('panier/', views.panier, name='panier'),
-path('panier/ajouter/<int:product_id>/', views.ajouter_au_panier, name='ajouter_au_panier'),
-path('panier/supprimer/<int:product_id>/', views.supprimer_du_panier, name='supprimer_du_panier'),
-
-   
-      path('catalogue/', views.catalogue, name='catalogue'),
+    path('panier/ajouter/<int:product_id>/', views.ajouter_au_panier, name='ajouter_au_panier'),
+    path('panier/supprimer/<int:product_id>/', views.supprimer_du_panier, name='supprimer_du_panier'),
+    path('catalogue/', views.catalogue, name='catalogue'),
     path('panier/', views.panier, name='panier'),
     path('panier/ajouter/<int:product_id>/', views.ajouter_au_panier, name='ajouter_au_panier'),
     path('panier/supprimer/<int:product_id>/', views.supprimer_du_panier, name='supprimer_du_panier'),
     path('paiement/', views.paiement, name='paiement'),
     path('historique/', views.historique, name='historique'),
+    path('recu/', views.recu_view, name='recu_default'),
+    path('recu/<int:commande_id>/', views.recu_view, name='recu_view'),
+    
 
 ]
 

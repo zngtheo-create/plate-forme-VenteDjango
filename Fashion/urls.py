@@ -10,5 +10,7 @@ urlpatterns = [
     path('catalogue/', catalogue, name='catalogue'),
     path('catalogue/', catalogue, name='catalogue'),
     path('historique/', historique, name='historique'),
+    path('recu/', recu_view, name='recu'),
+    
   
 ]
